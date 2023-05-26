@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Thiendam from "./Classes/Showname";
+import Header from "./Components/Home";
+import Lifecycle from './Classes/Lifecycle';
+import First_Form from './Classes/Form';
+import ChoseClass from './Classes/AlertForm';
+import AVGForm from './Classes/AVGForm';
+import MainHeader from './Components/Header';
+import StudentTbl from './Classes/StudentTbl';
+import MockAPIII from './Classes/mockAPI';
+import CRUD from './Classes/AxiosCRUD';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MainHeader />
+      {/* <Header />
+      <First_Form/>
+      <ChoseClass /> */}
+      <CRUD/>
+      <AVGForm />
+      <StudentTbl />
+      <MockAPIII/>
+      {/* <Lifecycle/>
+      <Thiendam /> */}
+      //   
+    </>
+    // <>
+    
+    // </>
   );
 }
 
