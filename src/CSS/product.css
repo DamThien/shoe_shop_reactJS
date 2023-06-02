@@ -4,9 +4,9 @@
 
 .cards {
   position: relative;
-  width: 320px;
+  width: 80%;
   height: 480px;
-  background: #191919;
+  background: #ffffff;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -28,7 +28,7 @@
 }
 
 .cards::after {
-  content: "TSShop";
+
   position: absolute;
   bottom: 0;
   left: 0;
@@ -40,24 +40,22 @@
 .cards .imgBox {
   position: relative;
   width: 100%;
+  height: 55%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 20px;
   z-index: 1;
 }
-/*
+
 .cards .imgBox img {
-    max-width: 100%;
-    
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
     transition: .5s;
+    border-radius: 10px;
 }
 
-.cards:hover .imgBox img {
-    max-width: 50%;
-      
-}
-*/
 .cards .contentBox {
   position: relative;
   padding: 20px;
@@ -70,7 +68,7 @@
 
 .cards .contentBox h3 {
   font-size: 18px;
-  color: white;
+  color: black;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -78,9 +76,17 @@
 
 .cards .contentBox .price {
   font-size: 24px;
-  color: white;
+  color: black;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+.cards .contentBox p{
+  position: absolute;
+  margin: 0 auto;
+  width: 80%;
+  top: 40%;
+  transition: 0.5s;
 }
 
 .cards .contentBox .buy {
@@ -98,12 +104,28 @@
   transition: 0.5s;
 }
 
+.price{
+  margin: auto;
+}
+
 .cards:hover .contentBox .buy {
   top: 0;
   opacity: 1;
+}
+.cards:hover .contentBox p {
+  opacity: 0;
 }
 
 .mouse {
   height: 300px;
   width: auto;
+}
+
+.col{
+  display: flex;
+  justify-content: center;
+}
+
+.row{
+  margin: auto;
 }

@@ -29,29 +29,30 @@ export default class Product extends React.Component{
             <div className="containers">
                 <Banner />
                  <div className="abc">
-                    <h2>Products</h2>
-                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                    {this.state.product.map((products) => (
-                        <div class="col">
-                            <div class="cards">
+                    <h2 className="Heading1"><b>Products</b></h2>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        {this.state.product.map((products) => (
+                            <div class="col">
+                                <div class="cards">
 
-                                <div class="imgBox">
-                                    <img src={products.Image} width={200}></img>
+                                    <div class="imgBox">
+                                        <img src={products.Image} width={200}></img>
+                                    </div>
+
+                                    <div class="contentBox">
+                                        <h3>{products.Name}</h3>
+                                        <h2 class="price">{products.Price}</h2>
+                                        <a href="#" class="buy">Add to cart</a>
+                                        <a href="#" class="buy">Buy Now</a>
+                                        <p>{products.Description}</p>
+                                    </div>
+
                                 </div>
-
-                                <div class="contentBox">
-                                    <h3>{products.Name}</h3>
-                                    <h2 class="price">{products.Price}</h2>
-                                    <a href="#" class="buy">Add to cart</a>
-                                    <a href="#" class="buy">Buy Now</a>
-                                </div>
-
+                                
                             </div>
-                            
-                        </div>
-                    ))}
-            
-                </div>
+                        ))}
+                
+                    </div>
                  </div>
                 
             </div>
