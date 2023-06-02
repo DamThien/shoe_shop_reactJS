@@ -1,6 +1,6 @@
 import React from "react";
 import style from "../CSS/header.css";
-import Header from "./Home";
+
 import Product from "./Product";
 import "../CSS/product.css";
 import Admin from "./Admin";

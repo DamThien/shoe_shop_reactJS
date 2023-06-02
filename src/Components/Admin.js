@@ -68,38 +68,39 @@ export default class Admin extends React.Component {
             Price: Productlist.Price,
             Quantity: Productlist.Quantity,
             Image: Productlist.Image,
+            Description: Productlist.Description,
             showEditForm: true
         });
     }
     formEditBook = () => {
         return (
-            <div>
-                <input
-                    type="text"
-                    placeholder="Tên Sản Phẩm"
-                    value={this.state.Name}
-                    onChange={e => this.setState({ Name: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Giá"
-                    value={this.state.Price}
-                    onChange={e => this.setState({ Price: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Số Lượng"
-                    value={this.state.Quantity}
-                    onChange={e => this.setState({ Quantity: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Image"
-                    value={this.state.Image}
-                    onChange={e => this.setState({ Image: e.target.value })}
-                />
-                <button onClick={this.updateBook}>Update</button>
-            </div>
+            
+                        <div className="card editform">
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Ten San Pham</label>
+                                    <input type="text" className="form-control" value={this.state.Name} onChange={(e) => this.setState({ Name: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label> Price</label>
+                                    <input type="text" className="form-control" value={this.state.Price} onChange={(e) => this.setState({ Price: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>So luong</label>
+                                    <input type="number" className="form-control" value={this.state.Quantity} onChange={(e) => this.setState({ Quantity: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Image</label>
+                                    <input type="text" className="form-control" value={this.state.Image} onChange={(e) => this.setState({ Image: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Description</label>
+                                    <input type="text" className="form-control" value={this.state.Description} onChange={(e) => this.setState({ Description: e.target.value })} />
+                                </div>
+                                <button type="button" className="btn btn-primary" onClick={this.updateBook}>Update</button>
+                            </div>
+                        </div>
+                   
         );
     }
     updateBook = () => {

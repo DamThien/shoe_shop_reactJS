@@ -3,6 +3,7 @@ import { ReactDOM } from "react";
 import axios from "axios";
 import Header from "./Headers";
 import Banner from "./Banner";
+import "../CSS/Home.css";
 import "../CSS/product.css";
 export default class Product extends React.Component{
     constructor(props) {
@@ -41,7 +42,7 @@ export default class Product extends React.Component{
 
                                     <div class="contentBox">
                                         <h3>{products.Name}</h3>
-                                        <h2 class="price">{products.Price}</h2>
+                                        <h2 class="price">{products.Price}$</h2>
                                         <a href="#" class="buy">Add to cart</a>
                                         <a href="#" class="buy">Buy Now</a>
                                         <p>{products.Description}</p>
