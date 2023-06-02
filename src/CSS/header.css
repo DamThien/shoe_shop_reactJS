@@ -8,9 +8,9 @@
     box-sizing: border-box;
     font-family: fantasy;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
 }
-.container{
+.containers{
     z-index: 0;
 }
 .left-header{
@@ -65,9 +65,4 @@ h1{
 }
 .root{
     position: relative;
-}
-.abc{
-    width: 100%;
-    height: 80rem;
-    background-color: rgb(255, 205, 98);
 }
