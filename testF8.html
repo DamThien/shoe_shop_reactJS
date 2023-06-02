@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+ <script >
+        // React.createElement
+         const dvReact=
+      React.createElement(
+      'div',
+      {
+      className:'post-item'
+      },
+      React.createElement('h2',{
+      title:'Học react tại F8'
+      },'Học ReactJS'),
+      React.createElement('p',
+      null
+      ,'Học ReactJS từ cơ bản đến nâng cao'),
+      )
+      console.log(dvReact);
+       //Get root element
+       const root =document.getElementById('root');
+
+       //React-Dom->Render UI
+
+       ReactDOM.render(dvReact,root);
+
+        //document.createElement
+        // const dvDom=document.createElement('div');
+        // dvDom.className="post-item";
+        
+        // const h2Dom=document.createElement('h2');
+        // h2Dom.title='Học ReactJS tại F8';
+        // h2Dom.innerText='Học ReactJS';
+        // const pDom=document.createElement('p');
+        // pDom.innerText='Học ReactJS từ cơ bản đến nâng cao';
+        
+        // dvDom.appendChild(h2Dom);
+        // dvDom.appendChild(pDom);
+        
+        // document.body.appendChild(dvDom);
+      
+    </script>
+</body>
+</html>
