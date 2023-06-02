@@ -1,18 +1,16 @@
 import React from "react";
 import style from "../CSS/header.css"
 import Header from './Home';
-class MainHeader extends React.Component{
-    render() {
-        return (
-            <>
-                <HeaderTD />
-                <div className="container">
-                    <Banner />
-                    <div className="abc"></div>
-                </div>
-            </>
-        )
-    }
+function MainHeader(){
+    return (
+        <>
+            <HeaderTD />
+            <div className="container">
+                <Banner />
+                <div className="abc"></div>
+            </div>
+        </>
+    )
 }
 
 function HeaderTD() {
