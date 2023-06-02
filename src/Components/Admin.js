@@ -9,10 +9,10 @@ export default class Admin extends React.Component {
       this.state = {
           product: [],
           id: null,
-          Tensp: "",
-          Gia: "",
-          Soluong: "",
-          Hinhanh: "",
+          Name: "",
+          Price: "",
+          Quantity: "",
+          Image: "",
           Mota:""
         };
     }
@@ -31,7 +31,7 @@ export default class Admin extends React.Component {
     }
     deleteBook = (id) => {
         axios
-            .delete("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT" + id)
+            .delete("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT/" + id)
             .then(response => {
                 console.log(response);
                 const product = this.state.product.filter(item => item.id !== id);
@@ -43,10 +43,11 @@ export default class Admin extends React.Component {
     }
     addBook = () => {
         const Productlist = {
-            Tensp: this.state.Tensp,
-            Gia:this.state.Gia,
-            Soluong: this.state.Soluong,
-            Hinhanh: this.state.Hinhanh
+            Name: this.state.Name,
+            Price:this.state.Price,
+            Quantity: this.state.Quantity,
+            Image: this.state.Image,
+            Description:this.state.Description
         };
         axios
             .post("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT", Productlist)
@@ -63,43 +64,12 @@ export default class Admin extends React.Component {
         const Productlist = this.state.product.find(item => item.id === id);
         this.setState({
             id: id,
-            Tensp: Productlist.Tensp,
-            Gia: Productlist.Gia,
-            Soluong: Productlist.Soluong,
-            Hinhanh: Productlist.Hinhanh,
+            Name: Productlist.Name,
+            Price: Productlist.Price,
+            Quantity: Productlist.Quantity,
+            Image: Productlist.Image,
             showEditForm: true
         });
-    }
-    formAddBook = () => {
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div className="card">
-                            <div className="card-body">
-                                <div className="form-group">
-                                    <label>Ten San Pham</label>
-                                    <input type="text" className="form-control" value={this.state.Tensp} onChange={(e) => this.setState({ Tensp: e.target.value })} />
-                                </div>
-                                <div className="form-group">
-                                    <label> Gia</label>
-                                    <input type="text" className="form-control" value={this.state.Gia} onChange={(e) => this.setState({ Gia: e.target.value })} />
-                                </div>
-                                <div className="form-group">
-                                    <label>So luong</label>
-                                    <input type="number" className="form-control" value={this.state.Soluong} onChange={(e) => this.setState({ Soluong: e.target.value })} />
-                                </div>
-                                <div className="form-group">
-                                    <label>Hinhanh</label>
-                                    <input type="text" className="form-control" value={this.state.Hinhanh} onChange={(e) => this.setState({ Hinhanh: e.target.value })} />
-                                </div>
-                                <button type="button" className="btn btn-primary" onClick={this.addBook}>Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
     }
     formEditBook = () => {
         return (
@@ -107,26 +77,26 @@ export default class Admin extends React.Component {
                 <input
                     type="text"
                     placeholder="Tên Sản Phẩm"
-                    value={this.state.Tensp}
-                    onChange={e => this.setState({ Tensp: e.target.value })}
+                    value={this.state.Name}
+                    onChange={e => this.setState({ Name: e.target.value })}
                 />
                 <input
                     type="text"
                     placeholder="Giá"
-                    value={this.state.Gia}
-                    onChange={e => this.setState({ Gia: e.target.value })}
+                    value={this.state.Price}
+                    onChange={e => this.setState({ Price: e.target.value })}
                 />
                 <input
                     type="text"
                     placeholder="Số Lượng"
-                    value={this.state.Soluong}
-                    onChange={e => this.setState({ Soluong: e.target.value })}
+                    value={this.state.Quantity}
+                    onChange={e => this.setState({ Quantity: e.target.value })}
                 />
                 <input
                     type="text"
-                    placeholder="Hinhanh"
-                    value={this.state.Hinhanh}
-                    onChange={e => this.setState({ Hinhanh: e.target.value })}
+                    placeholder="Image"
+                    value={this.state.Image}
+                    onChange={e => this.setState({ Image: e.target.value })}
                 />
                 <button onClick={this.updateBook}>Update</button>
             </div>
@@ -134,13 +104,14 @@ export default class Admin extends React.Component {
     }
     updateBook = () => {
         const Productlist = {
-            Tensp: this.state.Tensp,
-            Gia: this.state.Gia,
-            Soluong: this.state.Soluong,
-            Hinhanh: this.state.Hinhanh
+            Name: this.state.Name,
+            Price: this.state.Price,
+            Quantity: this.state.Quantity,
+            Image: this.state.Image,
+            Description: this.state.Description
         };
         axios
-            .put("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT" + this.state.id, Productlist)
+            .put("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT/" + this.state.id, Productlist)
             .then(response => {
                 console.log(response);
                 const product = this.state.product.map(item => {
@@ -156,6 +127,42 @@ export default class Admin extends React.Component {
             }
             );
     }
+    formAddBook = () => {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Ten San Pham</label>
+                                    <input type="text" className="form-control" value={this.state.Name} onChange={(e) => this.setState({ Name: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label> Price</label>
+                                    <input type="text" className="form-control" value={this.state.Price} onChange={(e) => this.setState({ Price: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>So luong</label>
+                                    <input type="number" className="form-control" value={this.state.Quantity} onChange={(e) => this.setState({ Quantity: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Image</label>
+                                    <input type="text" className="form-control" value={this.state.Image} onChange={(e) => this.setState({ Image: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Description</label>
+                                    <input type="text" className="form-control" value={this.state.Description} onChange={(e) => this.setState({ Description: e.target.value })} />
+                                </div>
+                                <button type="button" className="btn btn-primary" onClick={this.addBook}>Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    
     render() {
         return (
             <div>
@@ -181,7 +188,7 @@ export default class Admin extends React.Component {
                                                 <th>Tên Sản Phẩm</th>
                                                 <th>Giá</th>
                                                 <th>Số Lượng</th>
-                                                <th>Hinhanh</th>
+                                                <th>Image</th>
                                                 <th>Xóa</th>
                                                 <th>Sửa</th>
                                                 {/* <th>Action</th> */}
