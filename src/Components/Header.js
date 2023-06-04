@@ -6,7 +6,7 @@ function MainHeader(){
         <>
             <HeaderTD />
             <div className="container">
-                <Banner />
+                
                 <div className="abc"></div>
             </div>
         </>

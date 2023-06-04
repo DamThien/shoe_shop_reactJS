@@ -4,6 +4,7 @@ import Header from "./Home";
 import Product from "./Product";
 import "../CSS/product.css";
 import Admin from "./Admin";
+import ShoppingCart from "./shopping_cart";
 import { BrowserRouter, Routes, Route, Link, NavLink, Redirect } from "react-router-dom";
 
 class MainHeader extends React.Component {
@@ -16,6 +17,11 @@ class MainHeader extends React.Component {
            
               <Routes>
                 <Route path="/admin" element={<Admin/>} /> {/* Hiển thị component Admin khi truy cập vào /admin */}
+              </Routes>
+           
+           
+              <Routes>
+                <Route path="/cart" element={<ShoppingCart/>} /> {/* Hiển thị component shopping cart */}
               </Routes>
            
               <Routes>

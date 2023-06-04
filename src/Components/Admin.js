@@ -2,6 +2,9 @@ import React from "react";
 import { ReactDOM } from "react";
 import axios from "axios";
 import HeaderAdmin from "./HeaderAdmin";
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 export default class Admin extends React.Component {
     constructor(props) {
@@ -21,7 +24,7 @@ export default class Admin extends React.Component {
     }
     componentDidMount() {
         axios
-            .get("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT")
+            .get("https://63a572132a73744b008e28e1.mockapi.io/Product")
             .then(response => {
                 this.setState({ product: response.data });
             })
@@ -31,7 +34,7 @@ export default class Admin extends React.Component {
     }
     deleteBook = (id) => {
         axios
-            .delete("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT/" + id)
+            .delete("https://63a572132a73744b008e28e1.mockapi.io/Product/" + id)
             .then(response => {
                 console.log(response);
                 const product = this.state.product.filter(item => item.id !== id);
@@ -50,15 +53,22 @@ export default class Admin extends React.Component {
             Description:this.state.Description
         };
         axios
-            .post("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT", Productlist)
+            .post("https://63a572132a73744b008e28e1.mockapi.io/Product", Productlist)
             .then(response => {
                 console.log(response);
                 const product = [...this.state.product, response.data];
                 this.setState({ product });
+                
+                 // Load lại trang Admin
+                window.location.reload();
+                // Hiển thị thông báo thành công
+                toast.success('Thêm sản phẩm thành công!');
             })
             .catch(error => {
                 console.log(error);
             });
+            
+
     }
     editBook = (id) => {
         const Productlist = this.state.product.find(item => item.id === id);
@@ -74,31 +84,37 @@ export default class Admin extends React.Component {
     formEditBook = () => {
         return (
             <div>
-                <input
-                    type="text"
-                    placeholder="Tên Sản Phẩm"
-                    value={this.state.Name}
-                    onChange={e => this.setState({ Name: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Giá"
-                    value={this.state.Price}
-                    onChange={e => this.setState({ Price: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Số Lượng"
-                    value={this.state.Quantity}
-                    onChange={e => this.setState({ Quantity: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Image"
-                    value={this.state.Image}
-                    onChange={e => this.setState({ Image: e.target.value })}
-                />
-                <button onClick={this.updateBook}>Update</button>
+                <div className="container">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Ten San Pham</label>
+                                    <input type="text" className="form-control" value={this.state.Name} onChange={(e) => this.setState({ Name: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label> Price</label>
+                                    <input type="text" className="form-control" value={this.state.Price} onChange={(e) => this.setState({ Price: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>So luong</label>
+                                    <input type="number" className="form-control" value={this.state.Quantity} onChange={(e) => this.setState({ Quantity: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Image</label>
+                                    <input type="text" className="form-control" value={this.state.Image} onChange={(e) => this.setState({ Image: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Description</label>
+                                    <textarea type="text" className="form-control" value={this.state.Description} onChange={(e) => this.setState({ Description: e.target.value })} />
+                                </div>
+                                <button onClick={this.updateBook}>Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         );
     }
@@ -111,7 +127,7 @@ export default class Admin extends React.Component {
             Description: this.state.Description
         };
         axios
-            .put("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT/" + this.state.id, Productlist)
+            .put("https://63a572132a73744b008e28e1.mockapi.io/Product/" + this.state.id, Productlist)
             .then(response => {
                 console.log(response);
                 const product = this.state.product.map(item => {
@@ -121,6 +137,7 @@ export default class Admin extends React.Component {
                     return item;
                 });
                 this.setState({ product });
+                window.location.reload();
             })
             .catch(error => {
                 console.log(error);
@@ -179,7 +196,6 @@ export default class Admin extends React.Component {
                                         {/* <button class="AddBtn" onClick={this.setStatus}>Add Book</button> */}
                                     </p>
                                     {this.state.showAddForm ? this.formAddBook() : null}
-
                                     <table className="table table-bordered">
                                         <thead>
 

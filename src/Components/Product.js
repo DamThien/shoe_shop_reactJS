@@ -1,65 +1,133 @@
 import React from "react";
-import { ReactDOM } from "react";
 import axios from "axios";
 import Header from "./Headers";
 import Banner from "./Banner";
 import "../CSS/product.css";
-export default class Product extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            product: [],
-          };
-      }
-     
-      componentDidMount() {
-          axios
-          .get("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT")
-              .then(response => {
-                  this.setState({ product: response.data });
-              })
-              .catch(error => {
-                  console.log(error);
-              });
-      }
 
-    render(){return(
-        <>
-            <Header/>
-            <div className="containers">
-                <Banner />
-                 <div className="abc">
-                    <h2 className="Heading1"><b>Products</b></h2>
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                        {this.state.product.map((products) => (
-                            <div class="col">
-                                <div class="cards">
+export default class Product extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      product: [],
+      cartItems: [],
+    };
+  }
 
-                                    <div class="imgBox">
-                                        <img src={products.Image} width={200}></img>
-                                    </div>
+  componentDidMount() {
+    console.log("Fetching product data...");
+    axios
+      .get("https://63a572132a73744b008e28e1.mockapi.io/Product")
+      .then((response) => {
+        console.log("Product data fetched successfully");
+        this.setState({ product: response.data });
+      })
+      .catch((error) => {
+        console.log("Error fetching product data:", error);
+      });
 
-                                    <div class="contentBox">
-                                        <h3>{products.Name}</h3>
-                                        <h2 class="price">{products.Price}</h2>
-                                        <a href="#" class="buy">Add to cart</a>
-                                        <a href="#" class="buy">Buy Now</a>
-                                        <p>{products.Description}</p>
-                                    </div>
+    console.log("Fetching cart items data...");
+    axios
+      .get("https://63a572132a73744b008e28e1.mockapi.io/shopping_cart")
+      .then((response) => {
+        console.log("Cart items data fetched successfully");
+        this.setState({ cartItems: response.data });
+      })
+      .catch((error) => {
+        console.log("Error fetching cart items data:", error);
+      });
+  }
 
-                                </div>
-                                
-                            </div>
-                        ))}
-                
-                    </div>
-                 </div>
-                
-            </div>
-        </>
-        
-        
-        
-    )
+  handleAddToCart = (productId) => {
+    console.log("Adding product to cart:", productId);
+
+    const { product, cartItems } = this.state;
+    const selectedProduct = product.find((item) => item.id === productId);
+
+    const existingCartItem = cartItems.find((item) => item.id === productId);
+    if (existingCartItem) {
+      const updatedCartItem = {
+        ...existingCartItem,
+        quantity: existingCartItem.quantity + 1,
+      };
+
+      axios
+        .put(`https://63a572132a73744b008e28e1.mockapi.io/shopping_cart/${existingCartItem.id}`,updatedCartItem
+        )
+        .then((response) => {
+          console.log("Cart item updated successfully:", response);
+          const updatedProduct = product.map((item) => {
+            if (item.id === existingCartItem.id) {
+              return updatedCartItem;
+            }
+            return item;
+          });
+          this.setState({ product: updatedProduct });
+        })
+        .catch((error) => {
+          console.log("Error updating cart item:", error);
+        });
+    } else {
+      const newCartItem = { ...selectedProduct, quantity: 1};
+
+      axios
+        .post(
+          "https://63a572132a73744b008e28e1.mockapi.io/shopping_cart",
+          newCartItem
+        )
+        .then((response) => {
+          console.log("Cart item added successfully:", response);
+          const updatedCartItems = [...cartItems, newCartItem];
+          this.setState({ cartItems: updatedCartItems });
+        })
+        .catch((error) => {
+          console.log("Error adding cart item:", error);
+        });
     }
+  };
+
+  render() {
+    return (
+      <>
+        <Header />
+        <div className="containers">
+          <Banner />
+          <div className="abc">
+            <h2 className="Heading1">
+              <b>Products</b>
+            </h2>
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+              {this.state.product.map((product) => (
+                <div className="col" key={product.id}>
+                  <div className="cards">
+                    <div className="imgBox">
+                      <img
+                        src={product.Image}
+                        width={200}
+                        alt={product.Name}
+                      />
+                    </div>
+                    <div className="contentBox">
+                      <h3>{product.Name}</h3>
+                      <h2 className="price">{product.Price}</h2>
+                      <button type="button" className="buy">
+                        Add to cart
+                      </button>
+                      <button
+                        type="button"
+                        className="buy"
+                        onClick={() => this.handleAddToCart(product.id)}
+                      >
+                        Buy Now
+                      </button>
+                      <p>{product.Description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
