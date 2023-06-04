@@ -78,6 +78,7 @@ export default class Admin extends React.Component {
             Price: Productlist.Price,
             Quantity: Productlist.Quantity,
             Image: Productlist.Image,
+            Description: Productlist.Description,
             showEditForm: true
         });
     }

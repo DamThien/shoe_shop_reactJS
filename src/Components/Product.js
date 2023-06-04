@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Header from "./Headers";
 import Banner from "./Banner";
+import "../CSS/Home.css";
 import "../CSS/product.css";
 
 export default class Product extends React.Component {
