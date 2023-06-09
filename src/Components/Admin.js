@@ -1,8 +1,8 @@
 import React from "react";
-import { ReactDOM } from "react";
+// import { ReactDOM } from "react";
 import axios from "axios";
 import HeaderAdmin from "./HeaderAdmin";
-
+const mockAPI = "https://63a572132a73744b008e28e1.mockapi.io/Product"
 export default class Admin extends React.Component {
     constructor(props) {
       super(props);
@@ -21,7 +21,7 @@ export default class Admin extends React.Component {
     }
     componentDidMount() {
         axios
-            .get("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT")
+            .get(mockAPI)
             .then(response => {
                 this.setState({ product: response.data });
             })
@@ -31,7 +31,7 @@ export default class Admin extends React.Component {
     }
     deleteBook = (id) => {
         axios
-            .delete("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT/" + id)
+            .delete(mockAPI + "/" + id)
             .then(response => {
                 console.log(response);
                 const product = this.state.product.filter(item => item.id !== id);
@@ -50,7 +50,7 @@ export default class Admin extends React.Component {
             Description:this.state.Description
         };
         axios
-            .post("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT", Productlist)
+            .post(mockAPI, Productlist)
             .then(response => {
                 console.log(response);
                 const product = [...this.state.product, response.data];
@@ -112,7 +112,7 @@ export default class Admin extends React.Component {
             Description: this.state.Description
         };
         axios
-            .put("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT/" + this.state.id, Productlist)
+            .put(mockAPI + "/" + this.state.id, Productlist)
             .then(response => {
                 console.log(response);
                 const product = this.state.product.map(item => {
