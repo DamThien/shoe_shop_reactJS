@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Header from "./Headers";
-
+import '../CSS/product.css'
 export default class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
@@ -60,8 +60,9 @@ export default class ShoppingCart extends React.Component {
         <br></br>
         <br></br>
         <br></br>
-        <h2>Shopping Cart</h2>
-        <div>
+        <div className="container">
+          <h2>Shopping Cart</h2>
+          <div>
           <table className="table table-bordered border-primary">
             <thead>
               <tr>
@@ -77,20 +78,23 @@ export default class ShoppingCart extends React.Component {
               {cartItems.map((cartItem) => (
                 <tr key={cartItem.id}>
                   <td>
-                    <img src={cartItem.Image} width={100} alt={cartItem.Name} />
+                  <img  src={cartItem.Image} width={200} height={200} alt={cartItem.Name} />
                   </td>
                   <td>{cartItem.Name}</td>
                   <td>{this.formatCurrency(cartItem.Price)}</td>
                   <td>{this.formatCurrency(cartItem.Price * cartItem.quantity)}</td>
                   <td>{cartItem.quantity}</td>
-                  <td><button class="deleteBtn" onClick={() => this.deleteCART(cartItem.id)}>Delete</button></td>
+                  <td><button className="btn btn-sm btn-warning" onClick={() => this.deleteCART(cartItem.id)}>Delete</button></td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <p>Total: {this.formatCurrency(total)}</p>
-          <button onClick={this.handleCheckout}>Checkout</button>
+          <h1>Total: {this.formatCurrency(total)}</h1>
+          <button className="checkoutBT" onClick={this.handleCheckout}>Checkout</button>
         </div>
+        </div>
+        
+        
       </div>
     );
   }

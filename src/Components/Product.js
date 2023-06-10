@@ -37,11 +37,17 @@ export default class Product extends React.Component {
         console.log("Error fetching cart items data:", error);
       });
   }
-
+  formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vn-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount);
+  };
   handleAddToCart = (productId) => {
     console.log("Adding product to cart:", productId);
 
     const { product, cartItems } = this.state;
+  
     const selectedProduct = product.find((item) => item.id === productId);
     const idpr=selectedProduct.id;
     const existingCartItem = cartItems.find((item) => item.idpr === idpr);
@@ -56,6 +62,7 @@ export default class Product extends React.Component {
         )
         .then((response) => {
           console.log("Cart item updated successfully:", response);
+          alert("Sản phẩm đã thêm thành công!!");
           const updatedProduct = product.map((item) => {
             if (item.id === existingCartItem.idpr) {
               return updatedCartItem;
@@ -109,13 +116,13 @@ export default class Product extends React.Component {
                     </div>
                     <div className="contentBox">
                       <h3>{product.Name}</h3>
-                      <h2 className="price">{product.Price}</h2>
-                      <button  class="cart" onClick={() => this.handleAddToCart(product.id)}>
-                        Add to cart
-                      </button>
-                      <button class="buy">
-                        Buy
-                      </button>
+                      <h2 className="price">{this.formatCurrency(product.Price)}</h2>
+    
+                      <button className="cart" onClick={() => this.handleAddToCart(product.id)}>Add to cart</button>
+                    
+                      
+                      <button className="buy" >Buy</button>
+                      
                       <br></br>
                       <br></br>
                       <p>{product.Description}</p>
