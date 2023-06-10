@@ -43,8 +43,8 @@ export default class Product extends React.Component {
 
     const { product, cartItems } = this.state;
     const selectedProduct = product.find((item) => item.id === productId);
-
-    const existingCartItem = cartItems.find((item) => item.id === productId);
+    const idpr=selectedProduct.id;
+    const existingCartItem = cartItems.find((item) => item.idpr === idpr);
     if (existingCartItem) {
       const updatedCartItem = {
         ...existingCartItem,
@@ -57,7 +57,7 @@ export default class Product extends React.Component {
         .then((response) => {
           console.log("Cart item updated successfully:", response);
           const updatedProduct = product.map((item) => {
-            if (item.id === existingCartItem.id) {
+            if (item.id === existingCartItem.idpr) {
               return updatedCartItem;
             }
             return item;
@@ -68,7 +68,7 @@ export default class Product extends React.Component {
           console.log("Error updating cart item:", error);
         });
     } else {
-      const newCartItem = { ...selectedProduct, quantity: 1};
+      const newCartItem = { ...selectedProduct, quantity: 1,idpr};
 
       axios
         .post(
