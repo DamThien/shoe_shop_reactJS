@@ -84,6 +84,7 @@ export default class Product extends React.Component {
         )
         .then((response) => {
           console.log("Cart item added successfully:", response);
+          alert("Sản phẩm đã thêm thành công!!");
           const updatedCartItems = [...cartItems, newCartItem];
           this.setState({ cartItems: updatedCartItems });
         })
