@@ -110,16 +110,14 @@ export default class Product extends React.Component {
                     <div className="contentBox">
                       <h3>{product.Name}</h3>
                       <h2 className="price">{product.Price}</h2>
-                      <button type="button" className="buy">
+                      <button  class="cart" onClick={() => this.handleAddToCart(product.id)}>
                         Add to cart
                       </button>
-                      <button
-                        type="button"
-                        className="buy"
-                        onClick={() => this.handleAddToCart(product.id)}
-                      >
-                        Buy Now
+                      <button class="buy">
+                        Buy
                       </button>
+                      <br></br>
+                      <br></br>
                       <p>{product.Description}</p>
                     </div>
                   </div>
