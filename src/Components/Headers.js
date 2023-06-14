@@ -15,7 +15,7 @@ export default class Header extends React.Component{
             <div className="right-header">
               <Link to="/admin">Admin</Link>
               <span>
-                <p>Cart</p>
+              <Link to="/cart">Cart</Link>
               </span>
               <span>
                 <a href="#">Login</a>

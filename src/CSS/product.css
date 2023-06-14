@@ -89,29 +89,41 @@
   transition: 0.5s;
 }
 
-.cards .contentBox .buy {
+.cards .contentBox .buy,
+.cards .contentBox .cart {
+  display: inline-block;
+  margin-top: 10px;
   position: relative;
-  top: 100px;
+  top: 0;
   opacity: 0;
-  padding: 10px 30px;
-  margin-top: 15px;
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
-  background: #ffce00;
+  background: rgb(255, 205, 98);
+  border: none;
+  padding: 10px 20px;
   border-radius: 30px;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: 0.5s;
+  cursor: pointer;
+  font-family: 'Istok Web', sans-serif;
+}
+
+.cards:hover .contentBox .buy,
+.cards:hover .contentBox .cart {
+  top: -10px;
+  opacity: 1;
+}
+.cards .contentBox .buy {
+  /* Các thuộc tính khác */
+  z-index: 2;
 }
 
 .price{
   margin: auto;
 }
 
-.cards:hover .contentBox .buy {
-  top: 0;
-  opacity: 1;
-}
+
 .cards:hover .contentBox p {
   opacity: 0;
 }
@@ -128,4 +140,9 @@
 
 .row{
   margin: auto;
+}
+
+.checkoutBT{
+  
+  background-color: orange;
 }
