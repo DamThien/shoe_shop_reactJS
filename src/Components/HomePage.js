@@ -7,6 +7,7 @@ import Admin from "./Admin";
 import ShowProduct from "./ShowProduct";
 import T1 from "./T1";
 import ShoppingCart from "./shopping_cart";
+import Slider from "./Slider";
 import { BrowserRouter, Routes, Route, Link, NavLink, Redirect } from "react-router-dom";
 
 class MainHeader extends React.Component {
@@ -28,6 +29,9 @@ class MainHeader extends React.Component {
           </Routes>           
           <Routes>
             <Route path="/cart" element={<ShoppingCart/>} /> {/* Hiển thị component shopping cart */}
+          </Routes>
+          <Routes>
+            <Route path="/slider" element={<Slider/>} /> {/* Hiển thị component shopping cart */}
           </Routes>
         </>
       </BrowserRouter>

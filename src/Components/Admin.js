@@ -1,5 +1,5 @@
 import React from "react";
-// import { ReactDOM } from "react";
+import { ReactDOM } from "react";
 import axios from "axios";
 import HeaderAdmin from "./HeaderAdmin.js";
 
@@ -58,7 +58,7 @@ export default class Admin extends React.Component {
         const product = [...this.state.product, response.data];
         this.setState({ product });
 
-        
+
       })
       .catch((error) => {
         console.log(error);
@@ -149,8 +149,8 @@ export default class Admin extends React.Component {
       Image: this.state.Image,
       Description: this.state.Description,
     };
-    console.log(this.state.id,Productlist);
-    
+    console.log(this.state.id, Productlist);
+
     axios
       .put(
         "https://63a572132a73744b008e28e1.mockapi.io/Product/" + this.state.id,
@@ -165,7 +165,7 @@ export default class Admin extends React.Component {
           return item;
         });
         this.setState({ product });
-    
+
       })
       .catch((error) => {
         console.log(error);
@@ -307,7 +307,7 @@ export default class Admin extends React.Component {
                                 <label htmlFor="inputPrice">Price</label>
                                 <input
                                   type="text"
-                                 
+
                                   className="form-control"
                                   name="inputPrice"
                                   id="inputPrice"
@@ -414,7 +414,7 @@ export default class Admin extends React.Component {
                                     this.setState({ Name: e.target.value })
                                   }
                                   placeholder="Enter name"
-                              
+
                                 />
                               </div>
                               <div className="form-group">
@@ -429,7 +429,7 @@ export default class Admin extends React.Component {
                                     this.setState({ Price: e.target.value })
                                   }
                                   placeholder="Enter price"
-                                  
+
                                 />
                               </div>
                               <div className="form-group">
@@ -444,7 +444,7 @@ export default class Admin extends React.Component {
                                     this.setState({ Quantity: e.target.value })
                                   }
                                   placeholder="Enter price"
-                                 
+
                                 />
                               </div>
 
@@ -459,7 +459,7 @@ export default class Admin extends React.Component {
                                   onChange={(e) =>
                                     this.setState({ Image: e.target.value })
                                   }
-                                  
+
                                 />
                               </div>
 
@@ -477,7 +477,7 @@ export default class Admin extends React.Component {
                                       Description: e.target.value,
                                     })
                                   }
-                                
+
                                 />
                               </div>
                               <button type="submit" className="btn btn-primary">
@@ -506,7 +506,7 @@ export default class Admin extends React.Component {
                       {this.state.product.map((products) => (
                         <tr key={products.id}>
                           <td>
-                          
+
                             {products.id}
                           </td>
                           <td>{products.Name}</td>
@@ -541,7 +541,7 @@ export default class Admin extends React.Component {
                             >
                               Edit
                             </button>
-                            
+
                           </td>
                         </tr>
                       ))}
