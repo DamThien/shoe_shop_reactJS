@@ -15,7 +15,7 @@ export default class Product extends React.Component{
      
       componentDidMount() {
           axios
-          .get("https://63a572132a73744b008e28e1.mockapi.io/PRODUCT")
+          .get("https://63a572132a73744b008e28e1.mockapi.io/Product")
               .then(response => {
                   this.setState({ product: response.data });
               })
