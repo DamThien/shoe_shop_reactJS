@@ -57,8 +57,6 @@ export default class Admin extends React.Component {
         console.log(response);
         const product = [...this.state.product, response.data];
         this.setState({ product });
-
-
       })
       .catch((error) => {
         console.log(error);
@@ -72,7 +70,7 @@ export default class Admin extends React.Component {
       Price: Productlist.Price,
       Quantity: Productlist.Quantity,
       Image: Productlist.Image,
-      Description: Productlist.Description
+      Description: Productlist.Description,
     });
   };
   formEditBook = () => {
@@ -165,7 +163,6 @@ export default class Admin extends React.Component {
           return item;
         });
         this.setState({ product });
-
       })
       .catch((error) => {
         console.log(error);
@@ -287,7 +284,7 @@ export default class Admin extends React.Component {
                           </div>
                           <div className="modal-body">
                             <form
-                              onSubmit={this.addBook}
+                              
                               encType="multipart/form-data"
                             >
                               <div className="form-group">
@@ -307,7 +304,6 @@ export default class Admin extends React.Component {
                                 <label htmlFor="inputPrice">Price</label>
                                 <input
                                   type="text"
-
                                   className="form-control"
                                   name="inputPrice"
                                   id="inputPrice"
@@ -367,8 +363,12 @@ export default class Admin extends React.Component {
                                   defaultValue={""}
                                 />
                               </div>
-                              <button type="submit" className="btn btn-primary">
-                                Submit
+                              <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick={this.addBook}
+                              >
+                                Add
                               </button>
                             </form>
                           </div>
@@ -388,7 +388,7 @@ export default class Admin extends React.Component {
                       <div className="modal-dialog" role="document">
                         <div className="modal-content">
                           <div className="modal-header">
-                            <h5 className="modal-title">Modal Add Product</h5>
+                            <h5 className="modal-title">Modal Edit Product</h5>
                             <button
                               type="button"
                               className="close"
@@ -401,7 +401,7 @@ export default class Admin extends React.Component {
                           </div>
                           <div className="modal-body">
                             <form
-                              onSubmit={this.updateBook}
+                             
                               encType="multipart/form-data"
                             >
                               <div className="form-group">
@@ -414,11 +414,10 @@ export default class Admin extends React.Component {
                                     this.setState({ Name: e.target.value })
                                   }
                                   placeholder="Enter name"
-
                                 />
                               </div>
                               <div className="form-group">
-                                <label >Price</label>
+                                <label>Price</label>
                                 <input
                                   type="text"
                                   className="form-control"
@@ -429,11 +428,10 @@ export default class Admin extends React.Component {
                                     this.setState({ Price: e.target.value })
                                   }
                                   placeholder="Enter price"
-
                                 />
                               </div>
                               <div className="form-group">
-                                <label >Quantity</label>
+                                <label>Quantity</label>
                                 <input
                                   type="number"
                                   className="form-control"
@@ -444,12 +442,11 @@ export default class Admin extends React.Component {
                                     this.setState({ Quantity: e.target.value })
                                   }
                                   placeholder="Enter price"
-
                                 />
                               </div>
 
                               <div className="form-group">
-                                <label >Image</label>
+                                <label>Image</label>
                                 <input
                                   type="text"
                                   className="form-control"
@@ -459,14 +456,11 @@ export default class Admin extends React.Component {
                                   onChange={(e) =>
                                     this.setState({ Image: e.target.value })
                                   }
-
                                 />
                               </div>
 
                               <div className="form-group">
-                                <label >
-                                  Description
-                                </label>
+                                <label>Description</label>
                                 <input
                                   type="text"
                                   name="inputDescription"
@@ -477,12 +471,9 @@ export default class Admin extends React.Component {
                                       Description: e.target.value,
                                     })
                                   }
-
                                 />
                               </div>
-                              <button type="submit" className="btn btn-primary">
-                                Submit
-                              </button>
+                              <button onClick={this.updateBook}>Update</button>
                             </form>
                           </div>
                         </div>
@@ -505,10 +496,7 @@ export default class Admin extends React.Component {
                     <tbody>
                       {this.state.product.map((products) => (
                         <tr key={products.id}>
-                          <td>
-
-                            {products.id}
-                          </td>
+                          <td>{products.id}</td>
                           <td>{products.Name}</td>
                           <td>{products.Price}</td>
                           <td>{products.Quantity}</td>
@@ -522,7 +510,6 @@ export default class Admin extends React.Component {
                           <td>
                             <button
                               className="btn btn-sm btn-warning"
-
                               onClick={() => this.deleteBook(products.id)}
                             >
                               Delete
@@ -534,14 +521,12 @@ export default class Admin extends React.Component {
                               className="btn btn-sm btn-warning"
                               style={{ width: "80px" }}
                               onClick={() => this.editBook(products.id)}
-
                               type="button"
                               data-toggle="modal"
                               data-target="#modelEditProduct"
                             >
                               Edit
                             </button>
-
                           </td>
                         </tr>
                       ))}
