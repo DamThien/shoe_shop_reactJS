@@ -14,7 +14,7 @@ export default class ShoppingCart extends React.Component {
   formatCurrency = (amount) => {
     return new Intl.NumberFormat("vn-VN", {
       style: "currency",
-      currency: "VND",
+      currency: "usd",
     }).format(amount);
   };
 
@@ -38,7 +38,7 @@ export default class ShoppingCart extends React.Component {
             console.log(response);
             const updatedCartItems = this.state.cartItems.filter(item => item.id !== id);
             this.setState({ cartItems: updatedCartItems });
-
+          alert("Successfully removed from cart!")
         })
         .catch(error => {
             console.log(error);
