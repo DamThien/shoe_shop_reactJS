@@ -283,10 +283,7 @@ export default class Admin extends React.Component {
                             </button>
                           </div>
                           <div className="modal-body">
-                            <form
-                              
-                              encType="multipart/form-data"
-                            >
+                            <form encType="multipart/form-data">
                               <div className="form-group">
                                 <label htmlFor="inputName">Name</label>
                                 <input
@@ -400,10 +397,7 @@ export default class Admin extends React.Component {
                             </button>
                           </div>
                           <div className="modal-body">
-                            <form
-                             
-                              encType="multipart/form-data"
-                            >
+                            <form encType="multipart/form-data">
                               <div className="form-group">
                                 <label>Name</label>
                                 <input
@@ -473,7 +467,13 @@ export default class Admin extends React.Component {
                                   }
                                 />
                               </div>
-                              <button onClick={this.updateBook}>Update</button>
+                              <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick={this.updateBook}
+                              >
+                                Update
+                              </button>
                             </form>
                           </div>
                         </div>
