@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
 
-
-
 .cards {
   position: relative;
   width: 80%;
@@ -28,7 +26,6 @@
 }
 
 .cards::after {
-
   position: absolute;
   bottom: 0;
   left: 0;
@@ -49,11 +46,11 @@
 }
 
 .cards .imgBox img {
-    width: 90%;
-    height: 100%;
-    object-fit: cover;
-    transition: .5s;
-    border-radius: 10px;
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+  border-radius: 10px;
 }
 
 .cards .contentBox {
@@ -81,7 +78,7 @@
   letter-spacing: 1px;
 }
 
-.cards .contentBox p{
+.cards .contentBox p {
   position: absolute;
   margin: 0 auto;
   width: 80%;
@@ -106,7 +103,7 @@
   letter-spacing: 1px;
   transition: 0.5s;
   cursor: pointer;
-  font-family: 'Istok Web', sans-serif;
+  font-family: "Istok Web", sans-serif;
 }
 
 .cards:hover .contentBox .buy,
@@ -119,10 +116,9 @@
   z-index: 2;
 }
 
-.price{
+.price {
   margin: auto;
 }
-
 
 .cards:hover .contentBox p {
   opacity: 0;
@@ -133,16 +129,15 @@
   width: auto;
 }
 
-.col{
+.col {
   display: flex;
   justify-content: center;
 }
 
-.row{
+.row {
   margin: auto;
 }
 
-.checkoutBT{
-  
+.checkoutBT {
   background-color: orange;
 }

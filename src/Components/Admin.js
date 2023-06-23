@@ -38,6 +38,7 @@ export default class Admin extends React.Component {
         console.log(response);
         const product = this.state.product.filter((item) => item.id !== id);
         this.setState({ product });
+        alert ("Delete sucessfully");
       })
       .catch((error) => {
         console.log(error);
@@ -57,10 +58,13 @@ export default class Admin extends React.Component {
         console.log(response);
         const product = [...this.state.product, response.data];
         this.setState({ product });
+        alert ("Add sucessfully");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
       });
+      
   };
   editBook = (id) => {
     const Productlist = this.state.product.find((item) => item.id === id);
@@ -141,6 +145,7 @@ export default class Admin extends React.Component {
   };
   updateBook = () => {
     const Productlist = {
+      id:this.state.id,
       Name: this.state.Name,
       Price: this.state.Price,
       Quantity: this.state.Quantity,
@@ -163,6 +168,8 @@ export default class Admin extends React.Component {
           return item;
         });
         this.setState({ product });
+        alert ("Edit sucessfully");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
